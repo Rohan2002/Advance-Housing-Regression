@@ -4,6 +4,11 @@
 """
 import os
 from collections import defaultdict
+import pathlib
+
+def true_project_directory():
+    REPO_DIR = pathlib.Path(__file__).parent.absolute()
+    return os.path.dirname(REPO_DIR)
 
 def read_file(file: str):
     """
@@ -14,7 +19,7 @@ def read_file(file: str):
             yield line.rstrip()
 
 
-def map_feature_text_file_to_dict(feature: str):
+def map_feature_text_file_to_dict(project_directory: str, feature: str):
     """
     This function will read categorical variable file where
     each line in the file will have the format of variable - meaning.
