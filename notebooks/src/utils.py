@@ -50,5 +50,9 @@ def map_feature_text_file_to_dict(project_directory: str, feature: str):
     feature_dict = defaultdict(str)
     for line in line_reader:
         line_split = line.strip().split()
-        feature_dict[line_split[0]] = " ".join(line_split)[1:]
+        feature_dict[line_split[0]] = " ".join(line_split[1:])
     return feature_dict
+
+if __name__ == "__main__":
+    feature_dict = map_feature_text_file_to_dict('/Users/user/Applications/machine-learning/housing-prices', 'MSSubClass')
+    print(feature_dict)
