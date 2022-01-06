@@ -50,7 +50,8 @@ def map_feature_text_file_to_dict(project_directory: str, feature: str):
     feature_dict = defaultdict(str)
     for line in line_reader:
         line_split = line.strip().split()
-        feature_dict[line_split[0]] = " ".join(line_split[1:])
+        if len(line_split) != 0:
+            feature_dict[line_split[0]] = " ".join(line_split[1:])
     return feature_dict
 
 if __name__ == "__main__":

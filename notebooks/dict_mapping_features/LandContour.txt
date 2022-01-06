@@ -1,0 +1,4 @@
+       Lvl	Near Flat/Level
+       Bnk	Banked - Quick and significant rise from street grade to building
+       HLS	Hillside - Significant slope from side to side
+       Low	Depression
