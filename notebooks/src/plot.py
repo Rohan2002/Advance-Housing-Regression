@@ -1,3 +1,7 @@
+"""
+    2022 Housing Advance Regression plot file
+    Author: Rohan Deshpande
+"""
 import seaborn as sns
 import matplotlib.pyplot as plt
 from src.utils import (
@@ -8,7 +12,7 @@ from src.utils import (
 
 
 class Plot:
-    def __init__(self, train_dfß, project_directory):
+    def __init__(self, train_df, project_directory):
         self.train_df = train_df
         self.project_directory = project_directory
 
