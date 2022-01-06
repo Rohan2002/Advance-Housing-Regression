@@ -6,10 +6,43 @@ import os
 from collections import defaultdict
 import pathlib
 
+EPSILON = 1e-6
+
 def true_project_directory():
     REPO_DIR = pathlib.Path(__file__).parent.absolute()
     return os.path.dirname(REPO_DIR)
 
+def between(val ,a, b):
+    low = min(a, b)
+    high = max(a,b)
+    return val >= low and val <= high
+
+def interpret_skew_score(skew:float):
+    """
+        measures the lack of symmetry in data distribution.
+    """
+    if between(skew, -0.5, 0.5):
+        return "Fairly Symmetrical"
+    elif between(skew, -0.5, -1):
+        return "Negative Skew and Moderately Skewed"
+    elif between(skew, 0.5, 1):
+        return "Postive Skew and Moderately Skewed"
+    elif skew < -1:
+        return "Negative Skew and Highly Skewed"
+    elif skew > 1:
+        return "Positive Skew and Highly Skewed"
+
+def interpret_kurt_score(kurt:float):
+    """
+        measure of outliers present in the distribution.
+    """
+    if abs(kurt - 3) <= EPSILON:
+        return "Mesokurtic: Similar to Normal Distrubution"
+    elif kurt < 3:
+        return "Platykurtic: Peak is lower and broader than Mesokurtic and thus Lack of outliers."
+    elif kurt > 3:
+        return "Leptokurtic: Peak is Higher and thinner than Mesokurtic and thus Lot of outliers."
+        
 def read_file(file: str):
     """
     Efficient way to read large text files seperated by \n
