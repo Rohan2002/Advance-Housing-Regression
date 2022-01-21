@@ -76,3 +76,9 @@ class Plot:
         self.display_summary_stat_for_numeric_data(feature)
         sns.displot(self.train_df[feature])
         plt.show()
+    
+    def plot_heatmap(self, dataframe):
+        plt.figure(figsize=(15, 20))
+        corrmat = dataframe.corr()
+        sns.heatmap(corrmat, vmax=.8, square=True)
+        plt.show()
